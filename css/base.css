@@ -1,0 +1,32 @@
+body,html,header,main,footer,a,img,p,ul,li,span,input {
+	margin:0;
+	padding: 0;
+}
+html {
+	/*font-size: 13.88888888vw;*/    /*  设置自适应 当前设置比例为  720px下 rem 数值为100px   兼容注释: 安卓4.4以下不支持*/
+}
+li {
+	list-style: none;
+}
+a {
+	display: inline-block;
+	text-decoration: none;
+}
+input {
+	outline: none;
+	border:none;
+	background: none;
+}
+
+/* 公用公共功能class */
+.left {
+	float: left;
+}
+.right {
+	float: right;
+}
+.clearfix:after {
+	content: '';
+	display: block;
+	clear: both;
+}

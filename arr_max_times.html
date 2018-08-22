@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>找出数组中出现最大次数的元素</title>
+	<meta name = "viewport" content = "width = device-width, initial-scale = 1.0, maximum-scale = 1.0, user-scalable = 0" />
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}   
+		.arr_input {
+			width: 200px;
+			height: 50px;
+		} 
+		.arr_length  {
+			height: 50px;
+			line-height: 50px;
+		}
+	</style>
+</head>
+<body>
+	<p>输入数组元素</p><br>
+	<input type="text" name="" class='arr_input'><br>
+	<div>
+		<input type="button" value="确认" name="" class='arr_btn_yes arr_btn'>
+		<input type="button" value="取消" name="" class='arr_btn_noe arr_btn'>
+	</div>
+	<p class='arr_length'></p><br>
+	<input type="button" name="" value='开始判断次数' class='arr_max_times_btn'><br>
+	<p class='arr_max_times_p'></p><br>
+</body>
+<script type="text/javascript">
+	var arr = [];
+	var arr_text
+	document.getElementsByClassName('arr_btn_yes')[0].onclick = function () {
+		arr_text = document.getElementsByClassName('arr_input')[0].value;
+		if (!arr_text) {
+			alert('输入不能为空');
+		}else {
+			arr.push(arr_text);
+			document.getElementsByClassName('arr_input')[0].value = '';
+			document.getElementsByClassName('arr_length')[0].innerHTML= '数组的长度为' + arr.length;
+			arr_text = '';
+		}
+		console.log(arr);
+	}
+
+	document.getElementsByClassName('arr_max_times_btn')[0].onclick = function () {
+		if(arr) {
+			arr_fn1(arr);
+		}
+ 	}
+
+
+	
+	function arr_fn1(arr_fn) {
+		var arr = arr_fn;
+		var arrObj = new Object();
+		var arr_i;
+		var abj_num_2 = -1;
+		var abj_key = [];
+		for (let i = 0; i < arr.length ; i ++) {
+			arr_i = arr[i];
+			arrObj[arr_i]!=undefined? arrObj[arr_i]++ : arrObj[arr_i]=1;
+		}
+		for (let t in arrObj) {
+			if (abj_num_2 < arrObj[t]) {
+				abj_num_2 = arrObj[t];
+				abj_key = [];
+			}
+			if (abj_num_2 === arrObj[t] )  {
+				abj_key.push(t);
+			}
+		}
+
+		document.getElementsByClassName('arr_max_times_p')[0].innerHTML = '数组为' + arr + '<br>' + '数组中出现的最多次数的' + abj_key + '出现的次数为' + abj_num_2;
+	}
+
+
+
+	//获取五个 2 - 32 不重复的随机数函数
+	function readom_i(i) {
+		var arr_readom_i = [];
+		while (arr_readom_i.length < i)
+		{
+		    var num = Math.random() * 30 + 2 ;
+			if (arr_readom_i.indexOf(num) === -1) {
+				arr_readom_i.push(num);
+			}
+		}
+		return arr_readom_i;
+	}
+	console.log(readom_i(5));
+</script>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

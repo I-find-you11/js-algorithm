@@ -1,0 +1,113 @@
+body {
+	min-height: 100%;
+	padding-top: 1rem;
+}
+main {
+	padding: 0 .17rem;
+	background: url(../img/blue_bg.png);
+	background-repeat: repeat-x;
+	background-size: auto .41rem;
+}
+.coin_scroll {
+	overflow-x: auto;
+}
+.coin_tab ul {
+	font-size: 0;
+	white-space: nowrap;
+}
+.coin_tab ul li {
+	display: inline-block;
+	font-size: .26rem;
+	color: #fff;
+	line-height: 1;
+	text-align: left;
+	margin-bottom: .15rem;
+	width: 2.25rem;
+	margin-right: .2rem;
+}
+.coin_tab ul li:nth-child(1) {
+	width: 2.75rem;
+	text-align: center;
+	margin-right: .5rem;
+}
+.coin_tab ul li:nth-child(2) {
+	width: 3rem;
+}
+.coin_tab ul li:nth-child(3) {
+	width: 2rem;
+}
+.coin_tab ul li:nth-child(4) {
+	width: 2.5rem;
+}
+.coin_tab ul li:nth-child(5) {
+	width: 2.5rem;
+}
+.coin_tab ul li:nth-child(6) {
+	width: 1rem;
+}
+.coin_dist {
+	width: 100VW;
+}
+.coin_dist ul {
+	font-size: 0;
+}
+.coin_dist ul li {
+	white-space: nowrap;
+	height: .97rem;
+	border-bottom: 1px solid #edeef0;
+}
+.coin_dist ul li section {
+	display: inline-block;
+	vertical-align: middle;
+	line-height: 1;
+	text-align: left;
+	height: 100%;
+	line-height: .97rem;
+	font-size: .3rem;
+	color: #000;
+	margin-right: .2rem;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+.coin_dist ul li .coin_infor {
+	width: 2.75rem;
+	margin-right: .5rem;
+}
+.coin_dist ul li .coin_infor .dist_index {
+	width: .39rem;
+	text-align: right;
+	margin-right: .3rem;
+	color: #3e8fe6;
+	display: inline-block;
+	padding-left: .1rem;
+	font-size: .36rem;
+}
+.coin_dist ul li .coin_infor span,.coin_dist ul li .coin_infor img {
+	vertical-align: middle;
+	line-height: 1;
+}
+.coin_dist ul li .coin_infor img {
+	width: .64rem;
+	margin-right: .25rem;
+}
+.coin_dist ul li .coin_infor .coin_name {
+	color: #000;
+	font-weight: bold;
+}
+.coin_dist ul li .coin_market_value {
+	width: 3rem;
+}
+.coin_dist ul li .coin_price{
+	width: 2rem;
+}
+.coin_dist ul li .trading_volume {
+	width: 2.5rem;
+}
+.coin_dist ul li .coin_circulating_supply{
+	width: 2.5rem;
+}
+.coin_dist ul li .coin_change_amount {
+	width: 1rem;
+	color: #4eb96f;
+}

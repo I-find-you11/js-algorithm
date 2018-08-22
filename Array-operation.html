@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>数组操作</title>
+	<meta name = "viewport" content = "width = device-width, initial-scale = 1.0, maximum-scale = 1.0, user-scalable = 0" />
+</head>
+<body>
+</body>
+<script type="text/javascript">
+	//交集
+	function jiaoji(arr1,arr2) {
+		var arr3 = [];
+		var isPush = true;
+		for (i in arr2) {
+			if (arr1.indexOf(arr2[i]) !== -1 ) {
+				arr3.push(arr2[i]);
+			}
+		}
+		for(t in arr1) {
+			if (arr2.indexOf(arr1[t]) !== -1 ) {
+				arr3.push(arr1[t]);
+			}
+		}
+		arr3 = quchong(arr3);
+		
+		return arr3;
+	}
+
+	//差集 
+	function chaji(arr1,arr2){
+		var isPush = true;
+		var arr3 = [];
+		for (i in arr2) {
+			if (arr1.indexOf(arr2[i]) === -1 ) {
+				arr3.push(arr2[i]);
+			}
+		}
+		for(t in arr1) {
+			if (arr2.indexOf(arr1[t]) === -1 ) {
+				arr3.push(arr1[t]);
+			}
+		}
+		return arr3;
+	}
+
+	//并集 
+	function bingji(arr1,arr2) {
+		var isPush = true;
+		var arr3 = [];
+		for (i in arr2) {
+			arr3.push(arr2[i]);
+		}
+		for(t in arr1) {
+			if (arr3.indexOf(arr1[t]) === -1 ) {
+				arr3.push(arr1[t]);
+			}
+		}
+		arr3 = quchong(arr3);
+		return arr3;
+	}
+
+	//去重
+	function quchong(arr) {
+		for( j in arr) {
+			for(t in arr) {
+				if(arr[j] === arr[t] && t !== j) {
+					arr.splice(t,1);
+				}
+			}
+		}
+		return arr;
+	}
+	var a = [1,2,3,5,'a','s','d',2];
+	var b = [1,2,5,'s','d','f',6,1];
+	var c = jiaoji(a,b);
+	var d = chaji(a,b);
+	var e = bingji(a,b);
+	var f = quchong(a);
+	console.log(c);
+	console.log(d);
+	console.log(e);
+	console.log(f);
+</script>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
