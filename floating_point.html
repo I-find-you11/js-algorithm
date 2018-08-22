@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>浮点计算</title>
+</head>
+<body>
+    
+</body>
+<script>
+
+    function num_fn(num,operator) {
+        var arr =[];                
+        function sortNumber(a,b)
+        {
+        return b - a
+        }
+        for (let i in num) {                       //循环 运算数值 
+            arr.push(num[i].toString().length);    //把运算数值每一项 的长度放进数组      
+        }
+        arr.sort(sortNumber);                      //反序        
+        var pow_num = arr[0];                      //第一项为最大值 当作 倍数
+        for(let i in operator) {                   // 循环运算符
+            switch(operator[i]) {                  
+                case '+':                          
+                    num[i] = num[i]*Math.pow(10,pow_num);               //+和-前面一位数 扩大 倍数
+                    break;
+                case '-':
+                    num[i] = num[i]*Math.pow(10,pow_num);
+                    break;
+                case '/': 
+                    num[i] = num[i]*Math.pow(10,pow_num)*Math.pow(10,pow_num);       // / 前面一位数 扩大 倍数*倍数
+            }
+            if(i == operator.length - 1) {                              //数值比运算符多一个 最后一项直接 扩大倍数
+                i++;
+                num[i] = num[i]*Math.pow(10,pow_num);
+                
+            }
+        }
+        var cost = '';                                                 //保存 字符串变量
+        for(let i in num) {                                            //循环 数值                        
+            if(i != 0) {                                               //如果不是第一项 把运算符添加进字符串
+                cost = cost + operator[i - 1] + num[i];
+            }else {
+                cost = cost + num[i];                                  //如果是 直接把第一项放进字符串
+            }
+            console.log(num[i]);
+        }
+        console.log(cost);
+        return eval(cost) / Math.pow(10,pow_num);                     //执行字符串里面语句 然后缩小倍数
+    }
+
+    console.log(num_fn([0.1,0.2,0.3,0.4,0.1],['+','-','*','/']));
+    console.log(0.1+0.2-0.3*0.4/0.1);
+</script>
+</html>
