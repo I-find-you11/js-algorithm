@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>浮点计算</title>
+    <script src='vue.js'></script>
+    <script src='echarts.simple.min.js'></script>
+</head>
+<body>
+    <div class='app'>
+        <ul class='dist'>
+            <li v-for='(item,index) in dist' :key='index'>{{item}}</li>
+        </ul>
+    </div>
+</body>
+<script>
+    new Vue({
+        el:'.app',
+        data :{
+            dist : [
+                '1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','16','17','18','19'
+            ]
+        }
+    })
+
+    var arr = [{time:'07:01',price:1},{time:'09:31',price:44},{time:'09:58',price:99}];
+    function time(arr,endtime) {
+        var index_m = 1;
+        var index_h = 9;
+        var price = '';
+        var min = parseInt(endtime.slice(3));
+        var house = parseInt(endtime.slice(0,2));
+        var num_m,num_h,bl=true;
+        for(let i = 0; i< (bl? ++arr.length:arr.length);i++) {
+            console.log(111);
+            if(index_h>=house && index_m>min) {
+                break;
+            }
+            if(arr[i]) {
+                num_m = parseInt(arr[i].time.slice(3));
+                num_h = parseInt(arr[i].time.slice(0,2));
+            }
+            if(num_h < 9) {
+                arr.splice(i,1);
+                index_m = 1;
+                i--;
+                continue;
+            }
+            if(index_m > 59) {
+                index_h++;
+                index_m = 1;
+            }
+            if(index_m < 10 && index_h <= 9) {
+                index_m ++;
+                i--;
+                continue;
+            }
+            var str_m = index_m<10? '0' + index_m : index_m;
+            var str_h = index_h<10? '0' + index_h : index_h;
+            if(index_m == 10 && index_h == 9 && index_m != num_m) {
+                price = 100;
+            }
+            if(index_m == num_m && num_h == index_h) {
+                price = arr[i].price;
+                index_m++;
+                str_m = index_m<10? '0' + index_m : index_m;
+                str_h = index_h<10? '0' + index_h : index_h;
+                if(num_m<10 && num_h < 10) {
+                    arr.splice(i,1);
+                    i--;
+                    continue;
+                }
+                i++;
+                if(i!= arr.length && bl) {
+                    arr.splice(i,0,{
+                        time:str_h + ':' + str_m,
+                        price:price
+                    })
+                }
+                
+                continue;
+            }
+            arr.splice(i,0,{
+                time:str_h + ':' + str_m,
+                price:price
+            })
+            index_m++;
+        }
+        console.log(arr);
+        console.log(arr.length);
+    }
+    time(arr,'10:30');
+</script>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+    li,ul {
+        list-style: none;
+    }
+    .dist {
+        transform-style: preserve-3d;
+        margin: 0 auto;
+        width: 300px;
+        text-align: center;
+    }
+</style>
+</html>
